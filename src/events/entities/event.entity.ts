@@ -6,7 +6,7 @@ export class Event {
   @Prop()
   type: string;
 
-  @Prop()
+  @Prop({ index: true })
   name: string;
 
   @Prop(mongoose.Schema.Types.Mixed)
@@ -14,3 +14,4 @@ export class Event {
 }
 
 export const EventSchema = SchemaFactory.createForClass(Event);
+EventSchema.index({ type: 1, name: -1 });
